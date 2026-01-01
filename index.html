@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <title>Beach · Welcoming 2026</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Beach · Celebrating all we have achieved in 2025 and welcoming in the opportunities of 2026." />
+  <meta name="description" content="Beach · Celebrating all we have forged in 2025 and welcoming in the opportunities of 2026." />
 
   <style>
     :root {
       --beach-bg: #020617;
-      --beach-accent: #f97316; /* Beach-ish warm glow */
+      --beach-accent: #f97316;
       --beach-accent-soft: rgba(248, 113, 22, 0.35);
       --beach-text-main: #f9fafb;
       --beach-text-muted: #9ca3af;
@@ -48,7 +48,7 @@
       color: var(--beach-text-main);
     }
 
-    /* Replace the URL below with your generated “Beach night bike celebration” scene */
+    /* Swap to your final Viking Beach hero filename */
     .hero-bg {
       position: absolute;
       inset: 0;
@@ -62,7 +62,6 @@
       z-index: 0;
     }
 
-    /* Night gradient to keep text readable */
     .hero-overlay {
       position: absolute;
       inset: 0;
@@ -73,7 +72,6 @@
       z-index: 1;
     }
 
-    /* Fireworks canvas container */
     .fireworks {
       position: absolute;
       inset: 0;
@@ -104,9 +102,15 @@
         0 24px 70px rgba(0, 0, 0, 0.65),
         0 0 0 1px rgba(15, 23, 42, 0.9);
       backdrop-filter: blur(22px);
-      animation: floatIn 800ms ease-out forwards;
+
+      /* start hidden, we reveal via JS by adding .content-inner--visible */
       opacity: 0;
       transform: translateY(24px) scale(0.98);
+    }
+
+    /* Default (desktop/tablet) reveal animation */
+    .content-inner--visible {
+      animation: floatIn 800ms ease-out forwards;
     }
 
     @keyframes floatIn {
@@ -129,27 +133,29 @@
     }
 
     .logo-mark {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #111827; /* fallback if image fails */
-  border: 3px solid rgba(255,255,255,0.18);
-  box-shadow:
-    0 0 40px rgba(248, 113, 22, 0.55),
-    0 0 120px rgba(255, 255, 255, 0.1),
-    0 5px 15px rgba(0,0,0,0.7);
-  backdrop-filter: blur(6px);
-}
-.logo-mark img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* prevents distortion, keeps shape */
-  transform: scale(1.05); /* slight zoom for bleed */
-}
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111827;
+      border: 3px solid rgba(255, 255, 255, 0.18);
+      box-shadow:
+        0 0 40px rgba(248, 113, 22, 0.55),
+        0 0 120px rgba(255, 255, 255, 0.1),
+        0 5px 15px rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+    }
+
+    .logo-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.05);
+      display: block;
+    }
 
     .logo-text {
       font-size: 0.78rem;
@@ -318,10 +324,34 @@
         0 0 16px rgba(248, 113, 22, 0.8);
     }
 
+    /* MOBILE TWEAKS: smaller content + custom animation */
     @media (max-width: 640px) {
+      .hero-content {
+        padding: 1.75rem 1.1rem;
+      }
+
       .content-inner {
-        padding: 1.5rem 1.25rem 1.75rem;
+        max-width: 520px;
+        padding: 1.4rem 1.2rem 1.7rem;
         border-radius: 1.2rem;
+
+        /* start even smaller so more bg is visible */
+        transform: translateY(24px) scale(0.9);
+      }
+
+      @keyframes floatInMobile {
+        0% {
+          opacity: 0;
+          transform: translateY(24px) scale(0.9);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(0.9); /* stays a bit smaller */
+        }
+      }
+
+      .content-inner--visible {
+        animation: floatInMobile 900ms ease-out forwards;
       }
 
       .footer-meta {
@@ -347,10 +377,9 @@
       <div class="content-inner">
         <div class="logo-row">
           <div class="logo-mark">
-            <!-- Swap this for your real Beach logo (SVG/PNG) -->
             <img src="Beach-logo.jpeg" alt="Beach logo" />
           </div>
-          <div class="logo-text">Beach Community</div>
+          <div class="logo-text">A Village of Makers</div>
         </div>
 
         <div class="pill-row">
@@ -359,30 +388,29 @@
         </div>
 
         <h1>
-          <span class="highlight">Celebrating all we have achieved in 2025</span><br />
-          welcoming in the opportunities of 2026
+          <span class="highlight">Celebrating all we forged in 2025</span><br />
+          welcoming the opportunities of 2026
         </h1>
 
         <p class="subheading">
-          A moment for <strong>builders, crafters, makers, vibers and friends of Beach</strong> to pause,
-          look back at what we shipped in 2025, and light up the sky for everything
-          that’s coming next.
+          A moment for <strong>builders, blacksmiths, and friends of Beach</strong>
+          to gather by the shore, reflect on our craft, and look ahead to what we will forge next.
         </p>
 
         <div class="action-row">
           <button class="primary-btn" type="button">
-            <span>Adventure With Us In 2026</span>
+            <span>Forge Ahead Into 2026</span>
           </button>
           <p class="microcopy">
-            This one-screen experience is our small <strong>thank you</strong> to everyone
-            who’s been part of the journey so far.
+            Here's to the forges we've lit, the tools we've shaped,
+            and the adventures waiting in <strong>2026</strong>.
           </p>
         </div>
       </div>
     </div>
 
     <div class="footer-meta">
-      <span>Beach · Makers & Craftspeople</span>
+      <span>Beach · A Village of Makers</span>
       <span class="footer-dot"></span>
       <span>2025 → 2026</span>
     </div>
@@ -392,7 +420,7 @@
   <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2/dist/index.umd.js"></script>
 
   <script>
-    // Simple parallax on hero background tied to cursor
+    // Background parallax
     (function () {
       const bg = document.querySelector(".hero-bg");
       if (!bg) return;
@@ -407,8 +435,8 @@
       }
 
       window.addEventListener("mousemove", (event) => {
-        const x = (event.clientX / window.innerWidth - 0.5) * 14; // range ~[-7, 7]
-        const y = (event.clientY / window.innerHeight - 0.5) * 10; // range ~[-5, 5]
+        const x = (event.clientX / window.innerWidth - 0.5) * 14;
+        const y = (event.clientY / window.innerHeight - 0.5) * 10;
         targetX = x;
         targetY = y;
 
@@ -423,7 +451,6 @@
       const container = document.querySelector(".fireworks");
 
       if (!container || typeof Fireworks === "undefined" || !Fireworks.default) {
-        // Library failed to load – silently skip
         return;
       }
 
@@ -442,7 +469,7 @@
         lineStyle: "round",
         hue: {
           min: 10,
-          max: 60 // warm “Beach at night” palette
+          max: 60
         },
         delay: {
           min: 40,
@@ -471,18 +498,17 @@
           max: 0.03
         },
         mouse: {
-          click: true,  // click to add extra fireworks
+          click: true,
           move: false,
           max: 3
         },
         sound: {
-          enabled: false // keep it visually quiet by default
+          enabled: false
         }
       });
 
       fireworks.start();
 
-      // Optional: pause fireworks when tab is hidden to save battery
       document.addEventListener("visibilitychange", () => {
         if (document.hidden) {
           fireworks.pause();
@@ -490,6 +516,19 @@
           fireworks.start();
         }
       });
+    })();
+
+    // Delayed content reveal (10s on mobile, instant on larger screens)
+    (function () {
+      const content = document.querySelector(".content-inner");
+      if (!content) return;
+
+      const mqMobile = window.matchMedia("(max-width: 640px)");
+      const delay = mqMobile.matches ? 10000 : 0; // 10s on mobile, 0 on desktop/tablet
+
+      window.setTimeout(() => {
+        content.classList.add("content-inner--visible");
+      }, delay);
     })();
   </script>
 </body>
